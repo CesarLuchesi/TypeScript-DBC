@@ -1,5 +1,5 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import AuthProvider from './context/AuthContext';
 import Address from './pages/address/Address';
@@ -20,7 +20,7 @@ function Routers() {
           <Route path='/users' element={<Users/>}/>
           <Route path='/address' element={<Address/>}/>
         </Routes>
-      <Footer/>
+      {/* <Footer/> */}
       </AuthProvider>
     </BrowserRouter>
   )

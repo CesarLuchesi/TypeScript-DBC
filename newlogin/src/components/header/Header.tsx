@@ -1,15 +1,27 @@
-import { AuthContext } from "../../context/AuthContext"
-import { useContext} from "react";
+import Logo from "./Logo";
+import Menu from "./Menu";
+
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
+
+import {
+ContainerHeader,
+} from "./Header.styles"
 
 function Header() {
-const {handleLogout,loginOn} = useContext<any>(AuthContext);
 
+  const {isToken} = useContext<any>(AuthContext)
   return (
-    <div>
-      Header
-      {/* {loginOn && */}
-    <button onClick={handleLogout}>Sair</button>
-    </div>
+    <>
+    {isToken && (
+    <ContainerHeader>
+      <header>
+        <Logo/>
+        <Menu/>
+      </header>
+      </ContainerHeader>
+    )}
+    </>
   )
 }
 

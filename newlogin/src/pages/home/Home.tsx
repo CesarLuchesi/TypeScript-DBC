@@ -1,7 +1,3 @@
-import { AuthContext } from "../../context/AuthContext"
-import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
 import { 
   Card,
   CardTitle,
@@ -10,16 +6,6 @@ import {
 
 function Home() {
   
-  const {takeToken} = useContext<any>(AuthContext);
-  const navigate = useNavigate();
-  
-  useEffect(() =>{
-    if(!takeToken()){
-      navigate('/login')
-    }
-  },[])
-
-
   return (
     <Container>
       <Card>

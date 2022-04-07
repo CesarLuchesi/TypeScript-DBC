@@ -1,20 +1,49 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Formik,Field, Form, FormikHelpers } from "formik"
 import { LoginDTO } from "../../model/LoginDTO"
+import { AiOutlineEyeInvisible,AiOutlineEye } from "react-icons/ai";
+import ReactDOM from "react-dom";
+
 import { 
+  Button,
+  Input,
+  LogoImg,
   DivForm, 
+  CardBody,
+  CardIcon,
+  CardForm,
   TitleLogin,
+  CardHeader,
+  DivFormName,
+  ShowPassword,
   ContainerLogin, 
 } from "./Login.styles"
 
 import { AuthContext } from "../../context/AuthContext"
 
 function Login() {
-  const {handleLogin} = useContext<any>(AuthContext);
+  const {handleLogin, navigate} = useContext<any>(AuthContext);
+  const [eyeON, setEyeOn] = useState(true);
+
+  
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token)
+    navigate('/');
+  },[])
 
   return (
     <ContainerLogin>
-        <TitleLogin>Login Vemser</TitleLogin>
+      <CardForm>
+
+        <CardHeader>
+        <LogoImg></LogoImg>
+        <TitleLogin>
+          Login Vemser
+          </TitleLogin>
+        </CardHeader>
+
+        <CardBody>
         <Formik
         initialValues={{
           usuario: '',
@@ -29,18 +58,35 @@ function Login() {
         }}
         >
           <Form>
+
           <DivForm>
+          <DivFormName>
           <label htmlFor="usuario">Usuário</label>
-        <Field name="usuario" id= "usuario" placeholder= "Digite o nome do usuário"/>
+          </DivFormName>
+        <Field 
+        as={Input}
+        name="usuario" id= "usuario" placeholder= "Digite o nome do usuário"/>
           </DivForm>
+
           <DivForm>
+          <DivFormName>
           <label htmlFor="senha">senha</label>
-        <Field name="senha" id= "senha" type = "password" placeholder= "Digite a sua senha"/>
+          </DivFormName>
+          <ShowPassword onClick={() => setEyeOn(!eyeON)}>
+        {eyeON ? < AiOutlineEye/> : < AiOutlineEyeInvisible/>}
+        </ShowPassword>
+        <Field
+        as={Input}
+        name="senha" id= "senha" type ={eyeON? "password" : "text"} placeholder= "Digite a sua senha" />
+         
           </DivForm>
-          <button type="submit"> Entrar</button>
+          <Button type="submit"> Entrar</Button>
           </Form>
         </Formik>
+        </CardBody>
+        </CardForm>
     </ContainerLogin>
   )};
+
 
 export default Login

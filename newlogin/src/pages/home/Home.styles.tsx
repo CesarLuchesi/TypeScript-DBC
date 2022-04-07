@@ -9,6 +9,8 @@ export const Card = styled.div`
     background-color: #FFF;
     border-radius: 10px;
     border: 1px solid #000;
+    height: 100%;
+    width: 70vh;
 `;
 
 export const CardTitle = styled.h1`
