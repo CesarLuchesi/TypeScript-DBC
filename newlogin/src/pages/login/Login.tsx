@@ -5,7 +5,7 @@ import { AiOutlineEyeInvisible,AiOutlineEye } from "react-icons/ai";
 import ReactDOM from "react-dom";
 
 import { 
-  Button,
+  Buttonn,
   Input,
   LogoImg,
   DivForm, 
@@ -80,7 +80,7 @@ function Login() {
         name="senha" id= "senha" type ={eyeON? "password" : "text"} placeholder= "Digite a sua senha" />
          
           </DivForm>
-          <Button type="submit"> Entrar</Button>
+          <Buttonn type="submit"> Entrar</Buttonn>
           </Form>
         </Formik>
         </CardBody>

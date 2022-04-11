@@ -74,7 +74,7 @@ export const Input = styled.input`
 `;
 
 
-export const Button = styled.button`
+export const Buttonn = styled.button`
   display: block;
   width: 100%;
   padding: 12px 0;
@@ -114,4 +114,26 @@ margin-left: 300px;
 margin-top: 22px;
 font-size: 25px;
   cursor: pointer;
+`;
+
+export const MinorButton = styled.button`
+  display: block;
+  width: 30%;
+  padding: 10px 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background-color: rgba(55, 81, 255, 1);
+  border: 0;
+  border-radius: 35px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+
+  &:hover {
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.16);
+    transform: translate(0, -5px);
+  }
+
 `;

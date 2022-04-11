@@ -6,12 +6,16 @@ import api from '../../api';
 import { useEffect, useState} from "react";
 import { EnderecoDTO } from "../../model/AddressDTO";
 import {
-ContainerAddress,
+  Input,
+  Buttonn,
+  CardForm,
+  AtuaButton,
+  DeletButton,
+  ContainerAddress,
 } from './Address.styles'
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -20,6 +24,20 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+
+import {
+  MinorButton,
+  LogoImg,
+  DivForm, 
+  CardBody,
+  CardIcon,
+  TitleLogin,
+  CardHeader,
+  DivFormName,
+  ShowPassword,
+  ContainerLogin,
+} from "../login/Login.styles"
+
 
 
 export const Address: FC<{}> = () =>{
@@ -290,12 +308,18 @@ return (
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 400 }}>
-    <h1>Endereços</h1>
+        <Box sx={{ ...style, width: 400, height: 800 }}>
+        <CardForm>
+            <CardHeader>
+            <TitleLogin>
+              Endereços
+            </TitleLogin>
+        </CardHeader>
+        <CardBody>
     <form onSubmit={formikProps.handleSubmit}>
-      <div>
+      <DivForm>
       <label htmlFor="cep">CEP:</label>
-      <input
+      <Input
         id="cep"
         name="cep"
         placeholder="Digite seu cep"
@@ -306,17 +330,17 @@ return (
                 <div>{formikProps.errors.cep}</div>
                 ) : null}
 
-      <button
+      <MinorButton
         type="button"
         onClick={() => getAddress(formikProps.values.cep)}
       >
         Buscar
-      </button>
-      </div>
+      </MinorButton>
+      </DivForm>
 
-    <div>
+    <DivForm>
       <label htmlFor="logradouro">Logradouro:</label>
-      <input
+      <Input
         id="logradouro"
         name="logradouro"
         placeholder="Digite seu logradouro"
@@ -326,11 +350,11 @@ return (
        {formikProps.errors.logradouro && formikProps.touched.logradouro ? (
                 <div>{formikProps.errors.logradouro}</div>
                 ) : null}
-    </div>
+    </DivForm>
 
-    <div>
+    <DivForm>
       <label htmlFor="numero">Número:</label>
-      <input
+      <Input
         id="numero"
         name="numero"
         placeholder="Digite o número da sua residência"
@@ -340,11 +364,11 @@ return (
        {formikProps.errors.numero && formikProps.touched.numero ? (
                 <div>{formikProps.errors.numero}</div>
                 ) : null}
-    </div>
+    </DivForm>
 
-    <div>
+    <DivForm>
       <label htmlFor="complemento">Complemento:</label>
-      <input
+      <Input
         id="complemento"
         name="complemento"
         placeholder="Digite o seu complemento"
@@ -354,11 +378,11 @@ return (
        {formikProps.errors.complemento && formikProps.touched.complemento ? (
                 <div>{formikProps.errors.complemento}</div>
                 ) : null}
-    </div>
+    </DivForm>
 
-    <div>
+    <DivForm>
       <label htmlFor="bairro">Bairro:</label>
-      <input
+      <Input
         id="bairro"
         name="bairro"
         placeholder="Digite seu bairro"
@@ -368,11 +392,11 @@ return (
       {formikProps.errors.bairro && formikProps.touched.bairro ? (
                 <div>{formikProps.errors.bairro}</div>
                 ) : null}
-    </div>
+    </DivForm>
 
-    <div>
+    <DivForm>
       <label htmlFor="localidade">Cidade:</label>
-      <input
+      <Input
         id="localidade"
         name="localidade"
         placeholder="Digite sua localidade"
@@ -382,11 +406,11 @@ return (
       {formikProps.errors.localidade && formikProps.touched.localidade ? (
                 <div>{formikProps.errors.localidade}</div>
                 ) : null}
-    </div>
+    </DivForm>
 
-    <div>
+    <DivForm>
       <label htmlFor="uf">Estado:</label>
-      <input
+      <Input
         id="uf"
         name="uf"
         placeholder="Digite a sigla do seu estado"
@@ -396,11 +420,11 @@ return (
       {formikProps.errors.uf && formikProps.touched.uf ? (
                 <div>{formikProps.errors.uf}</div>
                 ) : null}
-    </div>
+    </DivForm>
 
-    <div>
+    <DivForm>
       <label htmlFor="pais">País:</label>
-      <input
+      <Input
         id="pais"
         name="pais"
         placeholder="Digite o seu país"
@@ -410,9 +434,9 @@ return (
       {formikProps.errors.pais && formikProps.touched.pais ? (
                 <div>{formikProps.errors.pais}</div>
                 ) : null}
-    </div>
+    </DivForm>
 
-    <div>
+    <DivForm>
       <label htmlFor="tipo">Tipo de contato:</label>
       <select
         name="tipo"
@@ -422,10 +446,12 @@ return (
         <option value="RESIDENCIAL">Residencial</option>
         <option value="COMERCIAL">Comercial</option>
       </select>
-    </div>
+    </DivForm>
 
-    <button type="submit">Submit</button>
+    <Buttonn type="submit">Submit</Buttonn>
   </form>
+  </CardBody>
+  </CardForm>
   </Box>
     </Modal>
   <div>
@@ -434,9 +460,8 @@ return (
   <div>
 
     {/* paginação */}
-
     <Paper sx={{ width: '100%' }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      <TableContainer sx={{ maxHeight: 600 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -467,11 +492,11 @@ return (
                           return(
                             <TableCell key={column.id} align={column.align}>
                             <>
-                            <button onClick={() => setupUpdateAddress(row.id)}> atualizar</button>
+                            <AtuaButton onClick={() => setupUpdateAddress(row.id)}> atualizar</AtuaButton>
                               
                               </>
                             <>
-                            <button onClick={() => deleteAddress(row.id)}> deletar </button>
+                            <DeletButton onClick={() => deleteAddress(row.id)}> deletar </DeletButton>
                             
                               </>
                           </TableCell>

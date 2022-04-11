@@ -9,6 +9,8 @@ import {
 TrTable,
 TdTable,
 TitleUsers,
+DeletButton,
+AtuaButton,
 TheadTable,
 TableBackGround,
 } from "./User.styles"
@@ -16,7 +18,6 @@ import { Container } from "../home/Home.styles";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -25,6 +26,22 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+
+import {
+  Buttonn,
+  Input,
+  LogoImg,
+  DivForm, 
+  CardBody,
+  CardIcon,
+  CardForm,
+  TitleLogin,
+  CardHeader,
+  DivFormName,
+  ShowPassword,
+  ContainerLogin,
+} from "../login/Login.styles"
+import Loading from "../../components/Loading/Loading";
 
 
 function Users() {
@@ -232,9 +249,7 @@ const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => 
   setPage(0);
 };
       
-                      
-
-          
+                           
   return (
 <TableBackGround>
 <Button onClick={handleOpen}>Cadastrar usuário</Button>
@@ -245,15 +260,19 @@ const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => 
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
+        <CardForm>
+        <CardHeader>
+        <TitleLogin>
+          Cadastrar Usuário
+        </TitleLogin>
+        </CardHeader>
 
-        <div>
-          <h1>Cadastrar Usuário</h1>
-        </div>
-        <Container>
+        <CardBody>
           <form onSubmit={formikProps.handleSubmit}>
-             <div>
-             <label htmlFor="nome">Nome:</label>              
-              <input
+             <DivForm>
+             <label htmlFor="nome">Nome:</label>   
+                        
+              <Input
                 id="nome"
                 name="nome"
                 placeholder="Digite seu nome"
@@ -263,11 +282,11 @@ const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => 
               {formikProps.errors.nome && formikProps.touched.nome ? (
                 <div>{formikProps.errors.nome}</div>
                 ) : null}
-            </div>
+            </DivForm>
 
-            <div>
+            <DivForm>
               <label htmlFor="dataNascimento">Data de nascimento:</label>
-              <input
+              <Input
                 id="dataNascimento"
                 name="dataNascimento"
                 placeholder="Digite sua data de nascimento"
@@ -277,11 +296,12 @@ const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => 
               {formikProps.errors.dataNascimento && formikProps.touched.dataNascimento ? (
                 <div>{formikProps.errors.dataNascimento}</div>
                 ) : null}
-            </div>
+            </DivForm>
 
-            <div>
+            <DivForm>
+          
               <label htmlFor="cpf">CPF:</label>
-              <input
+              <Input
                 id="cpf"
                 name="cpf"
                 placeholder="Digite o número do seu CPF"
@@ -291,11 +311,11 @@ const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => 
               {formikProps.errors.cpf && formikProps.touched.cpf ? (
                 <div>{formikProps.errors.cpf}</div>
                 ) : null}
-            </div>
+            </DivForm>
 
-            <div>
+            <DivForm>
               <label htmlFor="email">E-mail:</label>
-              <input
+              <Input
                 id="email"
                 name="email"
                 placeholder="Digite o seu email"
@@ -305,12 +325,14 @@ const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => 
               {formikProps.errors.email && formikProps.touched.email ? (
                 <div>{formikProps.errors.email}</div>
                 ) : null}
-            </div>
-            <button type="submit">Salvar</button>
+            </DivForm>
+            <Buttonn type="submit">Salvar</Buttonn>
           </form>
-        </Container>
+          </CardBody>
+        </CardForm>
         </Box>
       </Modal>
+      
         <div>
         <TitleUsers>Lista de Usuários</TitleUsers>
         </div>
@@ -323,7 +345,7 @@ const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => 
           <TableHead>
             <TableRow>
               <TableCell align="center" colSpan={7}>
-              Lista de endereços
+              Lista de Usuários
               </TableCell>
             </TableRow>
             <TableRow>
@@ -349,11 +371,11 @@ const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => 
                           return(
                             <TableCell key={column.id} align={column.align}>
                             <>
-                            <button onClick={() => setupUpdateUser(row.idPessoa)}> update</button>
+                      <AtuaButton onClick={() => setupUpdateUser(row.idPessoa)}> atualizar</AtuaButton>
                               
                               </>
                             <>
-                            <button onClick={() => deleteUser(row.idPessoa)}> delete</button>
+                            <DeletButton onClick={() => deleteUser(row.idPessoa)}> delete</DeletButton>
                             
                               </>
                           </TableCell>
@@ -386,44 +408,6 @@ const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => 
       />
     </Paper>         
 
-
-
-
-
-
-          {/* <Table>
-            <TheadTable>
-              <tr>
-                <th>Usuário:</th>
-                <th>CPF:</th>
-                <th>Data de Nascimento:</th>
-                <th>Email:</th>
-                <th>Editar:</th>
-                <th>Deletar:</th>
-              </tr>
-            </TheadTable>
-            <tbody>
-              {people.map((user: any) => (
-                <TrTable key={user.idPessoa}>
-                   <TdTable>{user.nome}</TdTable>
-            <TdTable>{user.cpf}</TdTable>
-            <TdTable>{user.dataNascimento}</TdTable> 
-            <TdTable>{user.email}</TdTable>
-                  <TdTable>
-                    <button onClick={() => setupUpdateUser(user.idPessoa)}> update</button>
-                    
-
-                     
-                      
-                  
-                  </TdTable>
-                  <TdTable>
-                    <button onClick={() => deleteUser(user.idPessoa)}> delete</button>     
-                            </TdTable>
-                </TrTable>
-              ))}
-            </tbody>
-          </Table> */}
         </div>
       </TableBackGround>
 

@@ -50,13 +50,13 @@ function Home() {
     <Container>
       <Card>
         <CardTitle>
-          <h6>Usuarios</h6>
+          <h6> Número de Usuarios Cadastrados</h6>
           {people.length}
         </CardTitle>
       </Card>
       <Card>
         <CardTitle>
-          <h6>Endereços</h6>
+          <h6>Numero de Endereços Cadastrados</h6>
           {lista.length}
           </CardTitle>
       </Card>

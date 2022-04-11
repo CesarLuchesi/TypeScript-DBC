@@ -17,6 +17,9 @@ export const Card = styled.div`
     border: 1px solid #000;
     height: 100%;
     width: 70vh;
+    display: flex;
+    text-align: center;
+    margin: 20px 0 20px 0;
 `;
 
 export const CardTitle = styled.h1`
