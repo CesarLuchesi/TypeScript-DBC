@@ -4,7 +4,6 @@ import logoDBC from '../../images/logoDBC.png';
 export const ContainerLogin = styled.div`
    background-color:rgba(54, 55, 64, 1);
    height: 100vh;
-;
 `;
 
 export const CardForm = styled.div`

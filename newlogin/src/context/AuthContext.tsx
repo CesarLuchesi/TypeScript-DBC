@@ -1,11 +1,11 @@
-import  {FC, createContext, useState, useEffect,} from "react";
+import  {FC, createContext, useState, useEffect,ReactNode} from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
 import { LoginDTO } from "../model/LoginDTO";
 
 export const AuthContext = createContext({});
 
-const AuthProvider: FC<any>= ({children}) => {
+const AuthProvider: FC<ReactNode>= ({children}) => {
   const navigate = useNavigate();
   const [loginOn, setLoginOn] = useState(true);
   const [isToken, setIsToken] = useState(false);

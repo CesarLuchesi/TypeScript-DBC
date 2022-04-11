@@ -1,13 +1,15 @@
 import styled from "styled-components";
-import logoDBC from '../../images/logoDBC.png'
+import logoEcos from '../../images/LogoVemSer.png'
 
 export const ContainerHeader = styled.header`
+position: absolute;
     background-color: #363740;
   display: flex;
   flex-direction: column;
   width: 30vh;
   height: 100vh;
   align-items: center;
+  position: fixed;
 `;
 
 export const LiMenu = styled.li`
@@ -33,15 +35,14 @@ export const LiMenu = styled.li`
 `;
 
 export const LogoImg = styled.img.attrs({
-  src: `${logoDBC}`
+  src: `${logoEcos}`
 })`
-  width: 150px;
-  height: 150px;
-  margin: auto;
+margin: 20% 5% 10% 5%;
+  width: 80%;
 `;
 
 export const ButtonLogout = styled.button`
-  margin-top: 40%;
+  margin-top: 130%;
   width: 100%;
   padding: 12px 0;
   font-family: inherit;
